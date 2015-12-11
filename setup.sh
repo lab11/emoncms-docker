@@ -67,7 +67,7 @@ echo ""
 echo "==========================================================="
 
 # Create dhparam for nginx
-openssl dhparam -out /etc/nginx/dhparam.pem  2048
+# openssl dhparam -out /etc/nginx/dhparam.pem  2048
 
 # Use supervisord to start all processes
 service supervisor start
