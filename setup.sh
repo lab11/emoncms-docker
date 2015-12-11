@@ -53,8 +53,7 @@ if [[ ! -d $EMON_HOME ]]; then
 fi
 
 # Update the settings file for emoncms
-EMON_DIR="/var/www/html"
-cp "$EMON_DIR/default.settings.php" "/var/www/emoncms/settings.php"
+cp "$/var/www/emoncms/default.settings.php" "/var/www/emoncms/settings.php"
 sed -i "s/_DB_USER_/emoncms/" "/var/www/emoncms/settings.php"
 sed -i "s/_DB_PASSWORD_/$MYSQL_PASSWORD/" "/var/www/emoncms/settings.php"
 
