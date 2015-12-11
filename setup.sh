@@ -66,8 +66,8 @@ echo "   password: $MYSQL_PASSWORD"
 echo ""
 echo "==========================================================="
 
-# Setup Apache
-source /etc/apache2/envvars
+# Create dhparam for nginx
+openssl dhparam -out /etc/nginx/dhparam.pem  2048
 
 # Use supervisord to start all processes
 service supervisor start

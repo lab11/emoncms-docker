@@ -38,7 +38,6 @@ RUN sed -i 's/$redis_enabled = false;/$redis_enabled = true;/g' /var/www/emoncms
 RUN sed -i 's/;session.save_path = "\/var\/lib\/php5"/session.save_path = "\/var\/lib\/php5\/sessions"/g' /etc/php5/fpm/php.ini
 
 # Configure nginx webserver
-RUN openssl dhparam -out /etc/nginx/dhparam.pem 2048
 ADD ./emoncms.conf /etc/nginx/conf.d/emoncms.conf
 
 # Add setup script that configures things like the MySQL database
