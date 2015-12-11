@@ -1,5 +1,5 @@
 FROM ubuntu
-MAINTAINER https://github.com/mdef
+MAINTAINER https://github.com/lab11
 
 ENV DEBIAN_FRONTEND noninteractive
 
