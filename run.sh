@@ -53,7 +53,7 @@ if [[ ! -d $EMON_HOME ]]; then
 fi
 
 # Update the settings file for emoncms
-cp "$/var/www/emoncms/default.settings.php" "/var/www/emoncms/settings.php"
+cp "/var/www/emoncms/default.settings.php" "/var/www/emoncms/settings.php"
 sed -i "s/_DB_USER_/emoncms/" "/var/www/emoncms/settings.php"
 sed -i "s/_DB_PASSWORD_/$MYSQL_PASSWORD/" "/var/www/emoncms/settings.php"
 
@@ -69,4 +69,4 @@ echo "==========================================================="
 # openssl dhparam -out /etc/nginx/dhparam.pem  2048
 
 # Use supervisord to start all processes
-service supervisor start
+/usr/bin/supervisord -n -c /etc/supervisor/supervisord.conf

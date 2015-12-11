@@ -60,4 +60,4 @@ VOLUME ["/var/lib/phptimeseries"]
 
 # We want to go with the setup script when the docker image starts.
 # This will call supervisor to get things going when it finishes.
-CMD ["/setup.sh"]
+CMD ["/run.sh"]
