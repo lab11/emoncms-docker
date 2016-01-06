@@ -41,6 +41,7 @@ RUN sed -i 's\sessionclean /var/lib/php5 $(\sessionclean /var/lib/php5/sessions 
 
 # Configure nginx webserver
 ADD ./emoncms.conf /etc/nginx/conf.d/emoncms.conf
+RUN rm -f /etc/nginx/sites-enabled/default
 
 # Add run file for starting everything that also configures things, like
 # the SQL database
