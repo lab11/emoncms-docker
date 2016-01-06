@@ -36,6 +36,8 @@ RUN sed -i 's/$redis_enabled = false;/$redis_enabled = true;/g' /var/www/emoncms
 
 # Configure where to store PHP sessions
 RUN sed -i 's/;session.save_path = "\/var\/lib\/php5"/session.save_path = "\/var\/lib\/php5\/sessions"/g' /etc/php5/fpm/php.ini
+# Update the CRON job
+RUN sed -i 's\sessionclean /var/lib/php5 $(\sessionclean /var/lib/php5/sessions $(\g' /etc/cron.d/php5
 
 # Configure nginx webserver
 ADD ./emoncms.conf /etc/nginx/conf.d/emoncms.conf
@@ -43,6 +45,10 @@ ADD ./emoncms.conf /etc/nginx/conf.d/emoncms.conf
 # Add setup script that configures things like the MySQL database
 ADD setup.sh /setup.sh
 RUN chmod 755 /setup.sh
+
+# Add run file for starting everything
+ADD run.sh /run.sh
+RUN chmod 755 /run.sh
 
 # Add supervisor configurations
 ADD supervisor/mysql.conf /etc/supervisor/conf.d/mysql.conf
@@ -57,6 +63,10 @@ VOLUME ["/var/www/emoncms"]
 VOLUME ["/var/lib/phpfiwa"]
 VOLUME ["/var/lib/phpfina"]
 VOLUME ["/var/lib/phptimeseries"]
+
+# Specify which ports we use
+EXPOSE 80
+EXPOSE 443
 
 # We want to go with the setup script when the docker image starts.
 # This will call supervisor to get things going when it finishes.
