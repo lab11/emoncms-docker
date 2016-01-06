@@ -63,7 +63,6 @@ VOLUME ["/var/lib/phptimeseries"]
 
 # Specify which ports we use
 EXPOSE 80
-EXPOSE 443
 
 # We want to go with the setup script when the docker image starts.
 # This will call supervisor to get things going when it finishes.
